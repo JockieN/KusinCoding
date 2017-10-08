@@ -14,19 +14,10 @@ namespace test
             for (int i = 0; i <= 10; i++)
             {
                 Console.WriteLine("Hello Worlds //Jonte!");
+                Console.WriteLine("Hello gasdf //Jonte!");
                 Thread.Sleep(1000);
             }
             Console.ReadLine();
-
-            try
-            {
-                throw new ArgumentException();
-            }
-
-            catch (ArgumentException)
-            {
-                // Jaadu
-            }
         }
     }
 }
