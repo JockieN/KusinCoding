@@ -13,7 +13,7 @@ namespace test
         {
             for (int i = 0; i <= 10; i++)
             {
-                Console.WriteLine("Hello World!");
+                Console.WriteLine("Hello Worlds!");
                 Thread.Sleep(1000);
             }
             Console.ReadLine();
