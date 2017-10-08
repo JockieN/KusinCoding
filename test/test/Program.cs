@@ -17,6 +17,16 @@ namespace test
                 Thread.Sleep(1000);
             }
             Console.ReadLine();
+
+            try
+            {
+                throw new ArgumentException();
+            }
+
+            catch (ArgumentException)
+            {
+                // Jaadu
+            }
         }
     }
 }
