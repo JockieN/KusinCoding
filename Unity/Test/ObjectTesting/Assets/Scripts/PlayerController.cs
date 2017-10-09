@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
     private int count;
     private Vector3 originalPos;
+    private float groundDistance;
 
     // Use this for initialization
     void Start()
@@ -33,6 +34,9 @@ public class PlayerController : MonoBehaviour
         Vector3 movement = new Vector3(moveHorizontical, 0, moveVertical);
 
         rb.AddForce(movement * speed);
+
+        if (Input.GetKey(KeyCode.Space) && IsGrounded())
+            rb.velocity = Vector3.up * speed;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -46,6 +50,11 @@ public class PlayerController : MonoBehaviour
 
         if (other.gameObject.CompareTag("FallTag"))
             this.gameObject.transform.position = originalPos;
+    }
+
+    bool IsGrounded()
+    {
+        return Physics.Raycast(transform.position, -Vector3.up, groundDistance + 1f);
     }
 
     void SetCountText()
