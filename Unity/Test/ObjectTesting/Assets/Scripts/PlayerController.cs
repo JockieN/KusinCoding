@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody rb;
     private int count;
+    private Vector3 originalPos;
 
     // Use this for initialization
     void Start()
@@ -20,6 +21,7 @@ public class PlayerController : MonoBehaviour
         count = 0;
         SetCountText();
         winText.text = "";
+        originalPos = this.gameObject.transform.position;
     }
 
     // Update is called once per frame
@@ -41,12 +43,15 @@ public class PlayerController : MonoBehaviour
             count++;
             SetCountText();
         }
+
+        if (other.gameObject.CompareTag("FallTag"))
+            this.gameObject.transform.position = originalPos;
     }
 
     void SetCountText()
     {
-        countText.text = "Count: " + count.ToString() + " / 12";
-        if (count >= 12)
+        countText.text = "Count: " + count.ToString() + " / 18";
+        if (count >= 18)
         {
             countText.text = "Completed!";
             winText.text = "You Win!"; // Doesn't work
