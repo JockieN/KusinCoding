@@ -37,6 +37,14 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Space) && IsGrounded())
             rb.velocity = Vector3.up * speed;
+
+        if (Input.GetKey(KeyCode.LeftControl))
+        {
+            if (speed != 5)
+                speed = 5;
+            else
+                speed = 20;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -48,8 +56,34 @@ public class PlayerController : MonoBehaviour
             SetCountText();
         }
 
+        if (other.gameObject.CompareTag("Boost Tag"))
+        {
+            StartCoroutine(BoostPickup());
+            other.gameObject.SetActive(false);
+        }
+
+        if (other.gameObject.CompareTag("Scale Tag"))
+        {
+            StartCoroutine(ScalePickup());
+            other.gameObject.SetActive(false);
+        }
+
         if (other.gameObject.CompareTag("FallTag"))
             this.gameObject.transform.position = originalPos;
+    }
+
+    IEnumerator BoostPickup()
+    {
+        speed = 10;
+        yield return new WaitForSeconds(3f);
+        speed = 5;
+    }
+
+    IEnumerator ScalePickup()
+    {
+        transform.localScale += new Vector3(1f, 1f, 1f);
+        yield return new WaitForSeconds(3f);
+        transform.localScale -= new Vector3(1f, 1f, 1f);
     }
 
     bool IsGrounded()
