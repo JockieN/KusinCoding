@@ -17,6 +17,7 @@ namespace test
                 Console.WriteLine("Hello gasdf //Jonte!");
                 Console.WriteLine("Jonte");
                 //
+                // Bot test
                 Thread.Sleep(1000);
             }
             Console.ReadLine();
