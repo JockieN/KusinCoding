@@ -97,7 +97,14 @@ public class PlayerController : MonoBehaviour
         if (count >= 18)
         {
             countText.text = "Completed!";
-            winText.text = "You Win!"; // Doesn't work
+            StartCoroutine(WinText());
         }
+    }
+
+    IEnumerator WinText()
+    {
+        winText.text = "You Win!";
+        yield return new WaitForSeconds(5f);
+        winText.text = "";
     }
 }
