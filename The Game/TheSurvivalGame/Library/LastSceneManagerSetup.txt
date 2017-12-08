@@ -1,0 +1,8 @@
+sceneSetups:
+<<<<<<< HEAD
+- path: Assets/TheSurvivalGame.unity
+=======
+- path: Assets/testScene.unity
+>>>>>>> 7925c107fccd5e6ac00d083401e93ed5da36da2e
+  isLoaded: 1
+  isActive: 1
